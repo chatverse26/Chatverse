@@ -1,0 +1,1 @@
+{"dependencies":{"express":"^4.19.2"},"description":"Chatverse — shared PG-13 community character-chat for Hardballs Radio. One server, one AI key, everyone chats.","engines":{"node":">=18"},"license":"UNLICENSED","main":"server.js","name":"chatverse-server","scripts":{"start":"node server.js"},"version":"0.1.0"}
