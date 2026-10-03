@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0718">
+<title>Chatverse — Imagine • Create • Belong</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<div id="bg"></div>
+<div id="scrim"></div>
+
+<div id="app">
+  <!-- Welcome / username -->
+  <section class="screen" id="scr-welcome" data-bg="bg-celestial.jpg">
+    <div class="brand">
+      <h1>Chatverse</h1>
+      <p>Imagine • Create • Belong</p>
+    </div>
+    <div class="card">
+      <h2>Welcome to the verse ✨</h2>
+      <p>A PG-13 hangout for Hardballs Radio fans: make characters, chat with everyone's characters, and build what's in your imagination — together.</p>
+      <label for="nameInput">Pick your display name</label>
+      <input type="text" id="nameInput" maxlength="30" placeholder="e.g. RadioRanger" autocomplete="off">
+      <p class="hint">No email, no password, no account. Your name lives only in this browser.</p>
+      <button class="btn block" id="enterBtn">Enter Chatverse →</button>
+    </div>
+    <p class="footer-note">PG-13 community • Be kind • Keep it clean</p>
+  </section>
+
+  <!-- Character library -->
+  <section class="screen" id="scr-library" data-bg="bg-map.jpg">
+    <div class="brand"><h1>Chatverse</h1><p>The Character Library 📚</p></div>
+    <div class="toolbar">
+      <input type="text" id="searchInput" placeholder="Search characters…" autocomplete="off">
+    </div>
+    <div class="chips">
+      <button class="chip on" data-f="all">All</button>
+      <button class="chip" data-f="mine">Mine</button>
+      <button class="chip" data-f="starters">Starters</button>
+    </div>
+    <div class="grid" id="charGrid"></div>
+    <p class="footer-note" id="libCount"></p>
+  </section>
+
+  <!-- Character creator -->
+  <section class="screen" id="scr-create" data-bg="bg-onefreedom.jpg">
+    <div class="brand"><h1>Chatverse</h1><p>Create a Character 🛠️</p></div>
+    <div class="card">
+      <h2>Birth a new legend</h2>
+      <label>Avatar — pick one or upload a photo</label>
+      <div class="avatar-row" id="avatarRow"></div>
+      <input type="file" id="photoInput" accept="image/*" style="margin-top:10px">
+      <img id="avatarPreview" alt="avatar preview">
+      <label>Background — optional scene behind this character's chats</label>
+      <input type="file" id="bgInput" accept="image/*" style="margin-top:10px">
+      <img id="bgPreview" alt="background preview">
+      <button class="btn ghost block" id="bgRemoveBtn" style="display:none;margin-top:8px">Remove background</button>
+      <label for="cName">Character name</label>
+      <input type="text" id="cName" maxlength="40" placeholder="e.g. Captain Comeback">
+      <label for="cPersonality">Personality — who are they?</label>
+      <textarea id="cPersonality" maxlength="600" placeholder="A retired pirate weatherman who predicts storms with dramatic flair…"></textarea>
+      <label for="cGreeting">First greeting</label>
+      <textarea id="cGreeting" maxlength="300" placeholder="Ahoy! Storm's brewin' and so is great conversation!"></textarea>
+      <p class="hint">Keep it PG-13 — kids hang out here. Your character goes live in the shared library for everyone. <span id="byLine"></span></p>
+      <button class="btn block" id="createBtn">Add to the Library ✨</button>
+    </div>
+  </section>
+
+  <!-- You / settings -->
+  <section class="screen" id="scr-you" data-bg="bg-cosmostree.jpg">
+    <div class="brand"><h1>Chatverse</h1><p>You 👤</p></div>
+    <div class="card">
+      <h2>Your display name</h2>
+      <input type="text" id="youNameInput" maxlength="30" placeholder="e.g. RadioRanger" autocomplete="off">
+      <button class="btn block" id="saveNameBtn">Save name</button>
+      <p class="hint">No email, no password, no account. Your name lives only in this browser.</p>
+    </div>
+    <div class="card">
+      <h2>🖼️ My background</h2>
+      <p>Pick a personal background for your library and welcome screens. Only you see it — everyone else sees the built-in art.</p>
+      <input type="file" id="myBgInput" accept="image/*">
+      <img id="myBgPreview" alt="my background preview">
+      <button class="btn block" id="saveBgBtn">Set my background</button>
+      <button class="btn ghost block" id="clearBgBtn">Use built-in backgrounds</button>
+      <p class="hint">JPG, PNG or WebP, up to 3MB. Stored on the server under your anonymous ID.</p>
+    </div>
+    <p class="footer-note">PG-13 community • Be kind • Keep it clean</p>
+  </section>
+
+  <!-- Info / safety -->
+  <section class="screen" id="scr-info" data-bg="bg-cosmostree.jpg">
+    <div class="brand"><h1>Chatverse</h1><p>Good to Know 💜</p></div>
+    <div class="card">
+      <h2>🛡️ PG-13, always</h2>
+      <p>Chatverse is a kid-friendly zone. Messages pass through a safety filter, and characters are instructed to keep every reply clean and kind. If something slips through, steer the chat back to fun — or pick another character.</p>
+    </div>
+    <div class="card">
+      <h2>💬 How chatting works</h2>
+      <p>Tap any character to chat 1-on-1. Everyone shares one community AI brain, so please be cool: there's a daily chat limit per person so the fun stays free for all. Your chats are saved on this device only.</p>
+    </div>
+    <div class="card">
+      <h2>🎨 Your imagination, shared</h2>
+      <p>Characters you create appear in the library for every visitor. By creating one, you agree it's your own original idea and PG-13.</p>
+    </div>
+    <p class="footer-note">Made with 💜 for the Hardballs Radio family</p>
+  </section>
+
+  <!-- Chat header + log (shown in chatting mode) -->
+  <div id="chatHead">
+    <span class="back" id="chatBack">←</span>
+    <span id="chatAvatar" class="avatar">🎤</span>
+    <div><h2 id="chatName">—</h2><div class="sub" id="chatSub">PG-13 • shared community brain</div></div>
+    <button id="replayBtn" class="replay-btn" title="Replay this chat as a video">🎬 Replay</button>
+  </div>
+  <div id="chatLog"></div>
+</div>
+
+<div id="chatBar">
+  <div class="row">
+    <input type="text" id="chatInput" maxlength="2000" placeholder="Say something…" autocomplete="off">
+    <button class="btn" id="sendBtn">Send</button>
+  </div>
+  <p id="capNote"></p>
+</div>
+
+<nav id="nav">
+  <button data-go="scr-library" class="on"><span class="ico">📚</span>Characters</button>
+  <button data-go="scr-create"><span class="ico">✨</span>Create</button>
+  <button data-go="scr-you"><span class="ico">👤</span>You</button>
+  <button data-go="scr-info"><span class="ico">💜</span>About</button>
+</nav>
+
+<!-- Replay player overlay -->
+<div id="replay" hidden>
+  <div class="replay-top">
+    <span>🎬 Chatverse Replay</span>
+    <button class="rbtn" id="replayCloseBtn" title="Close">✕</button>
+  </div>
+  <canvas id="replayCanvas" width="540" height="960"></canvas>
+  <div id="replayProg"></div>
+  <div class="replay-controls">
+    <button class="rbtn" id="replayBackBtn" title="Back one line">⏮</button>
+    <button class="rbtn big" id="replayPlayBtn" title="Play / pause">▶</button>
+    <button class="rbtn" id="replayFwdBtn" title="Forward one line">⏭</button>
+  </div>
+  <div class="replay-controls">
+    <button class="btn" id="replaySaveBtn">⏺ Save video</button>
+    <button class="btn ghost" id="replayStopBtn" style="display:none">⏹ Stop &amp; download</button>
+  </div>
+  <p id="replayNote"></p>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>
